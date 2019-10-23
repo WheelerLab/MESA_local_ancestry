@@ -16,3 +16,32 @@ Considerations:
 # Collect sample lists
 
 First examine the origninal MESA dbgap files for population and gender data. 
+
+Combine the consent groups into one plink set
+```{bash}
+plink
+  --bfile /home/ryan/mesa_files/dbgap_files/consent_group_1/consent.set.v6.p3.c1/phg000071.v2.NHLBI_SHARE_MESA.gen
+  --bmerge /home/ryan/mesa_files/dbgap_files/consent_group_2/consent.set.v6.p3.c2/phg000071.v2.NHLBI_SHARE_MESA.ge
+  --make-bed
+  --out SHARE_MESA_combined_consent
+```
+
+Samples are split among different phenotype files. Pull phenotypes and IDs from both consent groups with the following Rscript.
+```{r}
+Rscript pull_combined_sidno.R #best to run this line by line
+```
+
+Next identify what samples in topmed RNA-seq we have topmed or MESA genotypes for
+```{r}
+Rscript intial_sample_stats.R #best to run this line by line
+```
+Seems we can only pull CAU from MESA.
+
+Topmed genotypes are already imputed. Start by extracting the samples we have RNA-seq data for
+```{bash}
+/usr/local/bin/bcftools view \
+-S /home/ryan/topmed/RNA_files/${pop}/genotypes/${pop}.sample.list.txt \
+/home/wheelerlab3/Data/TOPMed/MESA_TOPMED_Imputation/${pop}/chr${chr}.dose.vcf.gz \
+-O z \
+-o /home/ryan/topmed/RNA_files/${pop}/genotypes/${pop}.chr${chr}.dose.vcf.gz
+```
