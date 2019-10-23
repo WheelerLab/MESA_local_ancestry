@@ -26,6 +26,7 @@ plink \
   --out ./genotypes/CAU.combined.consent \
 ```
 
-Next we will move onto preimputation QC
+## Preimputation QC
+First we will run the gwas QC pipeline on our CAU data
   
   
