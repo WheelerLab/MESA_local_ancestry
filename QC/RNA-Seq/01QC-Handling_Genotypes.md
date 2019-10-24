@@ -14,7 +14,13 @@ CHN, HIS, and AFA have already been imputed by topmed. Start by extracting the s
 -o /home/ryan/topmed/RNA_files/${pop}/genotypes/${pop}.chr${chr}.dose.vcf.gz
 ```
 Next parse by maf and R2.
-
+```
+python2 /home/ryan/Imputation/topmed.py \
+-i /home/ryan/topmed/RNA_files/${pop}/genotypes/vcfs/${pop}. \
+-c ${chr} \
+--cpos \
+--outdir /home/ryan/topmed/RNA_files/${pop}/genotypes/
+```
 # Process MESA CAU
 Meanwhile we will have to prep CAU for preimputation.
 Start by extracting the CAU genotypes from the dbgap plink files.
