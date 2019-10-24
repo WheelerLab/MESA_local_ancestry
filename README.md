@@ -1,2 +1,2 @@
-# MESA_local_ancestry
-running local ancestry on mesa
+# Topmed data processing
+Model building in multi ethnic populations
