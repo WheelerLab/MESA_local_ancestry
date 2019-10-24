@@ -74,4 +74,13 @@ next we will run the gwas QC pipeline on our CAU data using the [gwas qc pipelin
         -h /home/ryan/HAPMAP3_hg18 \
         -o /home/ryan/topmed/RNA_files/CAU/genotypes/preimputation/
 ```
-  
+## Preimputation 
+
+finally run preimpuation processing on CAU. Make sure you are using the bfile in the correct build as otherwise your imputation may fail.
+
+```
+/usr/bin/perl ~/Imputation/HRC-1000G-check-bim.pl -b /home/ryan/topmed/RNA_files/CAU/genotypes/preimputation/missingness_hwe_steps/05filtered_HWE.bim -f /home/ryan/topmed/RNA_files/CAU/genotypes/preimputation/missingness_hwe_steps/06_preimputation_freq.frq -r ~/Imputation/HRC.r1-1.GRCh37.wgs.mac5.sites.vcf -h
+sh Run-plink.sh
+```
+
+Upload after completion
